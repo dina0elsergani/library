@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'students/css/styles.css' %}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'students/js/scripts.js' %}"></script> 
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% if user.is_authenticated %}{% url 'students:book_list' %}{% else %}/students/{% endif %}">Library System</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item active-page">
+                    <a class="nav-link" href="{% url 'students:dashboard' %}">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'students:profile' %}">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'students:logout' %}">Logout</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    {% block auth_block %}
+    {% if not user.is_authenticated %}
+    <div class="auth-container text-center">
+        <h2>Welcome to Library System</h2>
+        <a href="{% url 'students:register' %}" class="btn btn-primary auth-btn"><i class="fas fa-user-plus"></i> Register</a>
+        <a href="{% url 'students:login' %}" class="btn btn-secondary auth-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
+    </div>
+    {% endif %}
+    {% endblock %}    
+
+    {% block content %}{% endblock %}
+
+</body>
+</html>

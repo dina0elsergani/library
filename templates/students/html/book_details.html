@@ -1,0 +1,15 @@
+{% extends 'students/html/base.html' %}
+
+{% block content %}
+    <div class="book-details-container">
+        {% if book.image %}
+            <img src="{{ book.image.url }}" alt="{{ book.title }}" class="book-image-detail">
+        {% else %}
+            <div class="no-image-detail">No Image</div>
+        {% endif %}
+        <h2>{{ book.title }}</h2>
+        <h4>by {{ book.author }}</h4>
+        <p>{{ book.description }}</p>
+        <a href="{% url 'students:borrow_book' book.id %}" class="borrow-link-detail">Borrow</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'students/css/styles.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Library System</a>
+        </div>
+    </nav>
+
+    <div class="container mt-4 custom-container">
+        <h1 class="mb-4">Welcome to the Library System</h1>
+        <p class="mb-5">Manage your book loans, view available books, and more.</p>
+
+        <div class="d-flex justify-content-center">
+            <div class="card role-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Admin</h5>
+                    <p class="card-text">Manage books, users and more.</p>
+                    <a href="/admin/" class="btn btn-primary">Go to Admin</a>
+                </div>
+            </div>
+
+            <div class="card role-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Student</h5>
+                    <p class="card-text">View books, manage loans and more.</p>
+                    <a href="/students/" class="btn btn-secondary">Go to Student</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

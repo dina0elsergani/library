@@ -1,0 +1,19 @@
+{% extends 'students/html/base.html' %}
+
+{% block content %}
+    <h2>Your Borrowed Books</h2>
+    <div class="books-list">
+    {% for borrow in borrowed_books %}
+    <div class="book-item">
+        {% if borrow.book.image %}
+        <img src="{{ borrow.book.image.url }}" alt="{{ borrow.book.title }}" class="book-image">
+        {% else %}
+            <div class="no-image">No Image</div>
+        {% endif %}
+        <h3>{{ borrow.book.title }} </h3>
+        <p>Due: {{ borrow.return_by }}</p>
+        <a href="{% url 'students:return_book' borrow.id %}" class="borrow-link">Return</a>
+    </div>
+    {% endfor %}
+    </div>
+{% endblock %}
